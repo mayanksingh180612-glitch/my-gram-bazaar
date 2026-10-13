@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gram Bajar | Fresh Fruits & Vegetables</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f7faf3;
+    color: #253b28;
+}
+
+header {
+    background: #176b36;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #d7ff88;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.cart {
+    background: #d7ff88;
+    color: #174b25;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.hero {
+    padding: 65px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: linear-gradient(120deg, #e3f6d7, #f8ffed);
+}
+
+.hero-content {
+    max-width: 520px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 58px);
+    margin-bottom: 20px;
+    color: #175c2e;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.hero img {
+    width: 45%;
+    max-width: 480px;
+    border-radius: 25px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px #315c3020;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    background: #208b42;
+    color: white;
+    padding: 14px 23px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #145c2c;
+    transform: translateY(-2px);
+}
+
+.section {
+    padding: 45px 7%;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #687568;
+    margin-bottom: 25px;
+}
+
+.search {
+    width: 100%;
+    max-width: 450px;
+    padding: 14px;
+    border: 1px solid #d1ddcd;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    font-size: 16px;
+    outline-color: #208b42;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.categories button {
+    padding: 10px 17px;
+    border: 1px solid #b9d6b3;
+    background: white;
+    color: #225b30;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.categories button.active,
+.categories button:hover {
+    background: #208b42;
+    color: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #183e1810;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px #183e1820;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #e8f0e4;
+}
+
+.card-body {
+    padding: 17px;
+}
+
+.card h3 {
+    margin-bottom: 9px;
+    font-size: 20px;
+}
+
+.price {
+    color: #208b42;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.card .btn {
+    width: 100%;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.feature {
+    background: white;
+    border-radius: 15px;
+    padding: 25px 15px;
+}
+
+.feature .emoji {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #143e24;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 2;
+}
+
+.cart-panel {
+    background: white;
+    margin-top: 20px;
+    border-radius: 12px;
+    padding: 20px;
+    display: none;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.small-btn {
+    border: none;
+    padding: 7px 11px;
+    border-radius: 6px;
+    background: #e5f5df;
+    cursor: pointer;
+}
+
+@media(max-width: 650px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav a {
+        margin: 0 12px 0 0;
+    }
+
+    .hero {
+        padding: 40px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero img {
+        width: 100%;
+    }
+
+    .section {
+        padding: 35px 5%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .card img {
+        height: 125px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .card h3 {
+        font-size: 17px;
+    }
+
+    .card .btn {
+        padding: 11px 5px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌿 Gram <span>Bajar</span></div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart" onclick="toggleCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Gaon Ka Swad,<br>Taazgi Ke Saath! 🌱</h1>
+        <p>
+            Aapke apne Gram Bajar mein swagat hai.
+            Taaze fruits aur hari-bhari sabziyan,
+            seedhe aapki shopping basket tak!
+        </p>
+        <a href="#products" class="btn">Shop Now 🛒</a>
+    </div>
+    <img
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=85"
+        alt="Fresh fruits and vegetables">
+</section>
+
+<section class="section" id="products">
+    <h2>🍎 Hamare Products</h2>
+    <p class="subtitle">Taaze fruits aur vegetables, aapke liye.</p>
+
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="🔍 Fruit ya vegetable search karein..."
+        oninput="renderProducts()">
+
+    <div class="categories">
+        <button class="active" onclick="setCategory('All', this)">Sabhi</button>
+        <button onclick="setCategory('Fruit', this)">🍎 Fruits</button>
+        <button onclick="setCategory('Vegetable', this)">🥦 Vegetables</button>
+    </div>
+
+    <div class="products" id="productList"></div>
+
+    <div class="cart-panel" id="cartPanel">
+        <h2>🛒 Aapka Cart</h2>
+        <div id="cartItems"></div>
+        <h3 id="total" style="margin:20px 0">Total: ₹0</h3>
+        <button class="btn" onclick="checkout()">Order Now</button>
+        <button class="small-btn" onclick="toggleCart()">Close</button>
+        <p id="orderMessage" style="margin-top:15px"></p>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2>🌾 Gram Bajar Kyun?</h2>
+    <p class="subtitle">Freshness aur quality hamari pehchaan hai.</p>
+
+    <div class="features">
+        <div class="feature">
+            <div class="emoji">🌱</div>
+            <h3>Fresh Products</h3>
+            <p>Taaze phal aur sabziyan.</p>
+        </div>
+        <div class="feature">
+            <div class="emoji">💰</div>
+            <h3>Sahi Daam</h3>
+            <p>Budget-friendly shopping.</p>
+        </div>
+        <div class="feature">
+            <div class="emoji">🚚</div>
+            <h3>Easy Shopping</h3>
+            <p>Ghar baithe order karein.</p>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <h2>🌿 Gram Bajar</h2>
+    <p>Fresh Fruits & Vegetables</p>
+    <p>📞 Contact: Apna mobile number yahan likhein</p>
+    <p>© 2026 Gram Bajar. All Rights Reserved.</p>
+</footer>
+
+<script>
+const products = [
+    {
+        id: 1, name: "Apple", category: "Fruit",
+        price: 120, unit: "kg", emoji: "🍎",
+        image: "photo-1560806887-1e4cd0b6cbd6"
+    },
+    {
+        id: 2, name: "Banana", category: "Fruit",
+        price: 50, unit: "dozen", emoji: "🍌",
+        image: "photo-1571771894821-ce9b6c11b08e"
+    },
+    {
+        id: 3, name: "Mango", category: "Fruit",
+        price: 100, unit: "kg", emoji: "🥭",
+        image: "photo-1553279768-865429fa0078"
+    },
+    {
+        id: 4, name: "Orange", category: "Fruit",
+        price: 80, unit: "kg", emoji: "🍊",
+        image: "photo-1547514701-42782101795e"
+    },
+    {
+        id: 5, name: "Tomato", category: "Vegetable",
+        price: 40, unit: "kg", emoji: "🍅",
+        image: "photo-1546094096-0df4bcaaa337"
+    },
+    {
+        id: 6, name: "Potato", category: "Vegetable",
+        price: 30, unit: "kg", emoji: "🥔",
+        image: "photo-1518977676601-b53f82aba655"
+    },
+    {
+        id: 7, name: "Broccoli", category: "Vegetable",
+        price: 70, unit: "kg", emoji: "🥦",
+        image: "photo-1459411621453-7b03977f4bfc"
+    },
+    {
+        id: 8, name: "Carrot", category: "Vegetable",
+        price: 45, unit: "kg", emoji: "🥕",
+        image: "photo-1445282768818-728615cc910a"
+    }
+];
+
+let category = "All";
+let cart = [];
+
+function renderProducts() {
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const filtered = products.filter(p =>
+        (category === "All" || p.category === category) &&
+        p.name.toLowerCase().includes(search)
+    );
+
+    document.getElementById("productList").innerHTML =
+        filtered.length ? filtered.map(p => `
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/${p.image}?auto=format&fit=crop&w=500&q=80"
+                    alt="${p.name}"
+                    onerror="this.onerror=null;this.src='https://placehold.co/400x250/e8f5e9/236b35?text=${p.name}'">
+                <div class="card-body">
+                    <h3>${p.emoji} ${p.name}</h3>
+                    <p>Fresh ${p.category.toLowerCase()}</p>
+                    <div class="price">₹${p.price} / ${p.unit}</div>
+                    <button class="btn" onclick="addToCart(${p.id})">
+                        Add to Cart +
+                    </button>
+                </div>
+            </div>
+        `).join("") : "<p>Koi product nahi mila.</p>";
+}
+
+function setCategory(value, button) {
+    category = value;
+    document.querySelectorAll(".categories button")
+        .forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    renderProducts();
+}
+
+function addToCart(id) {
+    const item = cart.find(p => p.id === id);
+
+    if (item) {
+        item.qty++;
+    } else {
+        cart.push({
+            ...products.find(p => p.id === id),
+            qty: 1
+        });
+    }
+
+    updateCart();
+}
+
+function updateCart() {
+    const count = cart.reduce((sum, p) => sum + p.qty, 0);
+    const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+
+    document.getElementById("cartCount").textContent = count;
+    document.getElementById("total").textContent = "Total: ₹" + total;
+
+    document.getElementById("cartItems").innerHTML = cart.length
+        ? cart.map(p => `
+            <div class="cart-row">
+                <span>${p.emoji} ${p.name}<br>
+                ₹${p.price} × ${p.qty}</span>
+                <div>
+                    <button class="small-btn" onclick="changeQty(${p.id},-1)">−</button>
+                    ${p.qty}
+                    <button class="small-btn" onclick="changeQty(${p.id},1)">+</button>
+                    <button class="small-btn" onclick="removeItem(${p.id})">🗑️</button>
+                </div>
+            </div>
+        `).join("")
+        : "<p>Aapka cart khaali hai.</p>";
+}
+
+function changeQty(id, change) {
+    const item = cart.find(p => p.id === id);
+    if (!item) return;
+
+    item.qty += change;
+    if (item.qty <= 0) {
+        cart = cart.filter(p => p.id !== id);
+    }
+    updateCart();
+}
+
+function removeItem(id) {
+    cart = cart.filter(p => p.id !== id);
+    updateCart();
+}
+
+function toggleCart() {
+    const panel = document.getElementById("cartPanel");
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+    if (panel.style.display === "block") {
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+}
+
+function checkout() {
+    if (!cart.length) {
+        document.getElementById("orderMessage").textContent =
+            "Pehle cart mein products add karein.";
+        return;
+    }
+
+    const message = cart.map(p =>
+        `${p.name} x ${p.qty} = Rs. ${p.price * p.qty}`
+    ).join("\n");
+
+    const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+
+    const orderText =
+        "Namaste Gram Bajar! Mujhe ye order karna hai:\n" +
+        message + "\nTotal: Rs. " + total;
+
+    document.getElementById("orderMessage").textContent =
+        "Order message taiyar hai. WhatsApp order ke liye apna number code mein set karein.";
+
+    // Apne WhatsApp number ko country code ke saath yahan likhein.
+    const whatsappNumber = "91XXXXXXXXXX";
+
+    if (/^91\d{10}$/.test(whatsappNumber)) {
+        window.open(
+            "https://wa.me/" + whatsappNumber +
+            "?text=" + encodeURIComponent(orderText),
+            "_blank"
+        );
+    }
+}
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
